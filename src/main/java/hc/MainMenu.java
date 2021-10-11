@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 public class MainMenu extends JFrame {
 
     public MainMenu() {
-        this.setTitle("Health calculator 1.0");
+        this.setTitle("Health calculator MegaBetaTest777 0.000001");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(800, 600);
         this.setLocation(500, 200);
