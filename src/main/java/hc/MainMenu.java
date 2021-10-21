@@ -6,7 +6,7 @@ import java.awt.*;
 public class MainMenu extends JFrame {
 
     public MainMenu() {
-        this.setTitle("Health calculator 0.1");
+        this.setTitle("Health calculator 2.0");
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setSize(800, 600);
         this.setLocation(500, 200);
