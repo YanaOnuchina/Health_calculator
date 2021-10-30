@@ -22,25 +22,25 @@ public class MainMenu extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 0;
 
-        JButton button1 = new JButton("Персональные данные");
+        JButton button1 = new JButton("Употреблённые продукты");
         button1.addActionListener(e -> {
             PersonalDataDialog dialog = new PersonalDataDialog();
             dialog.setVisible(true);
         });
 
-        JButton button2 = new JButton("База продуктов");
+        JButton button2 = new JButton("Персональные данные");
         button2.addActionListener(e -> {
             PersonalDataDialog dialog = new PersonalDataDialog();
             dialog.setVisible(true);
         });
 
-        JButton button3 = new JButton("Употреблённые продукты");
+        JButton button3 = new JButton("База продуктов");
         button3.addActionListener(e -> {
             PersonalDataDialog dialog = new PersonalDataDialog();
             dialog.setVisible(true);
         });
 
-        JButton button4 = new JButton("Начать новый день");
+        JButton button4 = new JButton("Выход");
         button4.addActionListener(e -> {
             PersonalDataDialog dialog = new PersonalDataDialog();
             dialog.setVisible(true);
@@ -56,5 +56,7 @@ public class MainMenu extends JFrame {
         gbc.gridy++;
 
         panel.add(button4, gbc);
+
+
     }
 }
