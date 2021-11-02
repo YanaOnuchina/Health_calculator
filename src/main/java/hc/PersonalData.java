@@ -22,11 +22,18 @@ public class PersonalData extends JDialog{
             this.dispose();
         });
 
+        JLabel RostText = new JLabel("<html><h2><font color=\"black\">Рост");
+        this.add(RostText);
+        RostText.setBounds(130,70,60,80);
         JTextField Rost = new JTextField();
         Rost.setBounds(50,130,200,40);
         this.add(Rost);
         this.setLayout(null);
 
+
+        JLabel VesText = new JLabel("<html><h2><font color=\"black\">Вес");
+        this.add(VesText);
+        VesText.setBounds(135,160,60,80);
         JTextField Ves = new JTextField();
         Ves.setBounds(50,220,200,40);
         this.add(Ves);
@@ -37,6 +44,26 @@ public class PersonalData extends JDialog{
         BoxPol.setBounds(50,310,200,40);
         this.add(BoxPol);
         this.setLayout(null);
+
+        String Activities[] = { " Отсутствует или минимальная "," Тренировка 3 раза в неделю", " Тренировка 5 раз в неделю"," Тренировка каждый день","Ежедневная физическая нагрузка(профи)"};
+        JComboBox BoxAct = new JComboBox(Activities);
+        BoxAct.setBounds(50,400,257,40);
+        this.add(BoxAct);
+
+        this.setLayout(null);
+
+        JTextField CalculateField = new JTextField();
+        CalculateField.setBounds(500,180,200,40);
+        this.add(CalculateField);
+        this.setLayout(null);
+        JButton Calculate = new JButton("<html><h2><font color=\"black\">Рассчитать");
+        Calculate.setBounds(500,130,
+200,40);
+        this.add(Calculate);
+
+        JButton Exit = new JButton("<html><h2><font color=\"black\">Сохранить");
+        Exit.setBounds(500,400,200,40);
+        this.add(Exit);
 
 
         this.setVisible(true);
