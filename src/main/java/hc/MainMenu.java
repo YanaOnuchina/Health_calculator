@@ -30,8 +30,7 @@ public class MainMenu extends JFrame {
 
         JButton button2 = new JButton("Персональные данные");
         button2.addActionListener(e -> {
-            PersonalDataDialog dialog = new PersonalDataDialog();
-            dialog.setVisible(true);
+            PersonalData dialog = new PersonalData();
         });
 
         JButton button3 = new JButton("База продуктов");
