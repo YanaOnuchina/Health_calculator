@@ -42,46 +42,49 @@ public class PersonalData extends JDialog{
         panel.setLayout(new GridBagLayout());
         getContentPane().add(panel);
 
-        JButton Nazad = new JButton("<html><h2><font color=\"black\">Назад"); /*НАЙТИ КАК ПОМЕНЯТЬ ЦВЕТ И РАЗМЕР*/
-        Nazad.setBounds(40, 20, 100, 40);
-        this.add(Nazad);
-        Nazad.addActionListener(e -> this.dispose());
-        //y: 70/ y:130
+        JButton Cancel = new JButton("<html><h2><font color=\"black\">Отмена"); /*ПОМЕНЯТЬ ЦВЕТ И РАЗМЕР*/
+        Cancel.setBounds(500, 450, 200, 40);
+        this.add(Cancel);
+        Cancel.addActionListener(e -> this.dispose());
         JLabel RostText = new JLabel("<html><h2><font color=\"black\">Рост");
         this.add(RostText);
-        RostText.setBounds(130,40,60,80);
+        RostText.setBounds(145,40,60,80);
         Rost = new JTextField();
-        Rost.setBounds(50,100,200,40);
+        Rost.setBounds(50,100,220,40);
         this.add(Rost);
         this.setLayout(null);
 
 
         JLabel VesText = new JLabel("<html><h2><font color=\"black\">Вес");
         this.add(VesText);
-        VesText.setBounds(135,130,60,80);
+        VesText.setBounds(145,130,60,80);
         Ves = new JTextField();
-        Ves.setBounds(50,190,200,40);
+        Ves.setBounds(50,190,220,40);
         this.add(Ves);
         this.setLayout(null);
 
 
         JLabel AgeText = new JLabel("<html><h2><font color=\"black\">Возраст");
         this.add(AgeText);
-        AgeText.setBounds(115,220,90,80);
+        AgeText.setBounds(125,220,90,80);
         Age = new JTextField();
-        Age.setBounds(50,280,200,40);
+        Age.setBounds(50,280,220,40);
         this.add(Age);
         this.setLayout(null);
 
-
-//310
+        JLabel PolText = new JLabel("<html><h2><font color=\"black\">Пол");
+        this.add(PolText);
+        PolText.setBounds(145,310,60,80);
         BoxPol = new JComboBox<>(GENDERS);
-        BoxPol.setBounds(50,370,200,40);
+        BoxPol.setBounds(50,370,220,40);
         this.add(BoxPol);
         this.setLayout(null);
 
+        JLabel ActText = new JLabel("<html><h2><font color=\"black\">Активность");
+        this.add(ActText);
+        ActText.setBounds(115,400,110,80);
         BoxAct = new JComboBox<>(ACTIVITIES);
-        BoxAct.setBounds(50,450,257,40);
+        BoxAct.setBounds(50,460,220,40);
         this.add(BoxAct);
 
         this.setLayout(null);
