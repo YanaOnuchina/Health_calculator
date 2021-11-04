@@ -2,8 +2,6 @@ package hc;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class MainMenu extends JFrame {
 
@@ -41,14 +39,9 @@ public class MainMenu extends JFrame {
             dialog.setVisible(true);
         });
 
-        JButton Exit = new JButton("Выход");
-        Exit.setBounds(350, 500, 100, 40);
-        Exit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(1);
-            }
-        });
+        JButton exit = new JButton("Выход");
+        exit.setBounds(350, 500, 100, 40);
+        exit.addActionListener(e -> System.exit(1));
 
 
         panel.add(button1, gbc);
@@ -60,7 +53,7 @@ public class MainMenu extends JFrame {
         panel.add(button3, gbc);
         gbc.gridy++;
 
-        panel.add(Exit, gbc);
+        panel.add(exit, gbc);
 
 
 

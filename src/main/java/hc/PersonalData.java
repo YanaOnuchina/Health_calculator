@@ -42,67 +42,68 @@ public class PersonalData extends JDialog{
         panel.setLayout(new GridBagLayout());
         getContentPane().add(panel);
 
-        JButton Cancel = new JButton("<html><h2><font color=\"black\">Отмена"); /*ПОМЕНЯТЬ ЦВЕТ И РАЗМЕР*/
-        Cancel.setBounds(500, 450, 200, 40);
-        this.add(Cancel);
-        Cancel.addActionListener(e -> this.dispose());
-        JLabel RostText = new JLabel("<html><h2><font color=\"black\">Рост");
-        this.add(RostText);
-        RostText.setBounds(145,40,60,80);
+        JButton cancel = new JButton("<html><h2><font color=\"black\">Отмена"); /*ПОМЕНЯТЬ ЦВЕТ И РАЗМЕР*/
+        cancel.setBounds(500, 450, 200, 40);
+        this.add(cancel);
+        cancel.addActionListener(e -> this.dispose());
+
+        JLabel rostText = new JLabel("<html><h2><font color=\"black\">Рост");
+        this.add(rostText);
+        rostText.setBounds(145,40,60,80);
         Rost = new JTextField();
         Rost.setBounds(50,100,220,40);
         this.add(Rost);
         this.setLayout(null);
 
 
-        JLabel VesText = new JLabel("<html><h2><font color=\"black\">Вес");
-        this.add(VesText);
-        VesText.setBounds(145,130,60,80);
+        JLabel vesText = new JLabel("<html><h2><font color=\"black\">Вес");
+        this.add(vesText);
+        vesText.setBounds(145,130,60,80);
         Ves = new JTextField();
         Ves.setBounds(50,190,220,40);
         this.add(Ves);
         this.setLayout(null);
 
 
-        JLabel AgeText = new JLabel("<html><h2><font color=\"black\">Возраст");
-        this.add(AgeText);
-        AgeText.setBounds(125,220,90,80);
+        JLabel ageText = new JLabel("<html><h2><font color=\"black\">Возраст");
+        this.add(ageText);
+        ageText.setBounds(125,220,90,80);
         Age = new JTextField();
         Age.setBounds(50,280,220,40);
         this.add(Age);
         this.setLayout(null);
 
-        JLabel PolText = new JLabel("<html><h2><font color=\"black\">Пол");
-        this.add(PolText);
-        PolText.setBounds(145,310,60,80);
+        JLabel polText = new JLabel("<html><h2><font color=\"black\">Пол");
+        this.add(polText);
+        polText.setBounds(145,310,60,80);
         BoxPol = new JComboBox<>(GENDERS);
         BoxPol.setBounds(50,370,220,40);
         this.add(BoxPol);
         this.setLayout(null);
 
-        JLabel ActText = new JLabel("<html><h2><font color=\"black\">Активность");
-        this.add(ActText);
-        ActText.setBounds(115,400,110,80);
+        JLabel actText = new JLabel("<html><h2><font color=\"black\">Активность");
+        this.add(actText);
+        actText.setBounds(115,400,110,80);
         BoxAct = new JComboBox<>(ACTIVITIES);
         BoxAct.setBounds(50,460,220,40);
         this.add(BoxAct);
 
         this.setLayout(null);
 
-        JTextField CalculateField = new JTextField();
-        CalculateField.setBounds(500,180,200,40);
-        CalculateField.setEditable(false);
-        this.add(CalculateField);
+        JTextField calculateField = new JTextField();
+        calculateField.setBounds(500,180,200,40);
+        calculateField.setEditable(false);
+        this.add(calculateField);
         this.setLayout(null);
         JButton Calculate = new JButton("<html><h2><font color=\"black\">Рассчитать");
         Calculate.setBounds(500,130, 200,40);
-        Calculate.addActionListener(e -> CalculateField.setText(String.format("%.2f", getPerson().getNorma())));
+        Calculate.addActionListener(e -> calculateField.setText(String.format("%.2f", getPerson().getNorma())));
         this.add(Calculate);
 
-        JButton Save = new JButton("<html><h2><font color=\"black\">Сохранить");
-        Save.setBounds(500,400,200,40);
-        Save.addActionListener(e -> savePersonData(getPerson()));
-        this.add(Save);
+        JButton save = new JButton("<html><h2><font color=\"black\">Сохранить");
+        save.setBounds(500,400,200,40);
+        save.addActionListener(e -> savePersonData(getPerson()));
+        this.add(save);
 
         this.loadSavedData();
 
