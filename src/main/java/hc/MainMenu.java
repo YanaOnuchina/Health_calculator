@@ -50,6 +50,7 @@ public class MainMenu extends JFrame {
         JButton button2 = new JButton("Персональные данные");
         button2.addActionListener(e -> {
             PersonalData dialog = new PersonalData();
+            dialog.setVisible(false);
         });
 
         JButton button3 = new JButton("База продуктов");
@@ -60,12 +61,7 @@ public class MainMenu extends JFrame {
 
         JButton Exit = new JButton("Выход");
         Exit.setBounds(350, 500, 100, 40);
-        Exit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(1);
-            }
-        });
+        Exit.addActionListener(e -> System.exit(1));
 
 
         panel.add(button1, gbc);
