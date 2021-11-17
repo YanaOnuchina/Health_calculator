@@ -95,10 +95,22 @@ public class PersonalData extends JDialog{
         calculateField.setEditable(false);
         this.add(calculateField);
         this.setLayout(null);
+
+        JButton Graphic = new JButton("<html><h2><font color=\"black\">График"); /*ПОМЕНЯТЬ ЦВЕТ И РАЗМЕР*/
+        Graphic.setBounds(500, 400, 200, 40);
+        Graphic.addActionListener(e -> {
+            Graphic dialog = new Graphic();
+            dialog.setVisible(true);
+        });
+        this.add(Graphic);
+        this.setLayout(null);
+
+
         JButton Calculate = new JButton("<html><h2><font color=\"black\">Рассчитать");
         Calculate.setBounds(500,130, 200,40);
         Calculate.addActionListener(e -> calculateField.setText(String.format("%.2f", getPerson().getNorma())));
         this.add(Calculate);
+        this.setLayout(null);
 
         JButton save = new JButton("<html><h2><font color=\"black\">Сохранить");
         save.setBounds(500,400,200,40);
