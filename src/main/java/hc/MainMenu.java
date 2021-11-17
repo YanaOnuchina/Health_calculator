@@ -55,8 +55,8 @@ public class MainMenu extends JFrame {
 
         JButton button3 = new JButton("База продуктов");
         button3.addActionListener(e -> {
-            PersonalDataDialog dialog = new PersonalDataDialog();
-            dialog.setVisible(true);
+            ProductBase dialog2 = new ProductBase();
+            dialog2.setVisible(true);
         });
 
         JButton Exit = new JButton("Выход");
