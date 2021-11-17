@@ -1,20 +1,9 @@
 package hc;
 import javax.swing.*;
 import java.awt.*;
-import javax.swing.table.*;
 
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.TableColumnModelEvent;
-import javax.swing.event.TableColumnModelListener;
 public class ProductBase extends JDialog{
 
-    /* private TableColumnModel columnModel;
-    private Object[] columnsHeader1 = new String[] {"Название продукта"};
-    private Object[] columnsHeader2 = new String[] {"Количество калорий на 100 грамм"};
-    public ProductBase(){
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        JTable table1 = new JTable(, columnsHeader1);*/
 
     public ProductBase() {
         this.setSize(800, 600);
@@ -26,7 +15,35 @@ public class ProductBase extends JDialog{
         panel.setLayout(new GridBagLayout());
         getContentPane().add(panel);
 
-        panel.add(new JLabel("Работаю"));
+        JButton cancel = new JButton("<html><h2><font color=\"black\">Назад");
+        cancel.setBounds(20, 20, 100, 40);
+        this.add(cancel);
+        cancel.addActionListener(e -> this.dispose());
+
+        JLabel name = new JLabel("<html><h2><font color=\"black\">Название");
+        this.add(name);
+        name.setBounds(495,20,90,80);
+
+        JTextField newname = new JTextField();
+        newname.setBounds(480,80,120,40);
+        newname.setEditable(true);
+        this.add(newname);
+
+        JLabel calorlable = new JLabel("<html><h2><font color=\"black\">Ккал/100 г.");
+        this.add(calorlable);
+        calorlable.setBounds(635,20,150,80);
+
+        JTextField newcal = new JTextField();
+        newcal.setBounds(620,80,120,40);
+        newcal.setEditable(true);
+        this.add(newcal);
+
+        JButton save = new JButton("<html><h2><font color=\"black\">Добавить");
+        save.setBounds(550, 140, 120, 40);
+        this.add(save);
+
+        this.setLayout(null);
+
 
 
     }

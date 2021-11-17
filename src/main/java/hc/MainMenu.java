@@ -2,8 +2,7 @@ package hc;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileReader;
@@ -35,45 +34,37 @@ public class MainMenu extends JFrame {
         panel.setLayout(new GridBagLayout());
         getContentPane().add(panel);
 
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.fill = GridBagConstraints.BOTH;
-        gbc.gridwidth = 1;
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-
-        JButton button1 = new JButton("Употреблённые продукты");
+        JButton button1 = new JButton("<html><h3><font color=\"black\">Начать новый день");
+        button1.setBounds(300, 130, 200, 50);
         button1.addActionListener(e -> {
-            PersonalDataDialog dialog = new PersonalDataDialog();
+            newday dialog = new newday();
             dialog.setVisible(true);
         });
 
-        JButton button2 = new JButton("Персональные данные");
+        JButton button2 = new JButton("<html><h3><font color=\"black\">Персональные данные");
+        button2.setBounds(300, 210, 200, 50);
         button2.addActionListener(e -> {
             PersonalData dialog = new PersonalData();
             dialog.setVisible(false);
         });
 
-        JButton button3 = new JButton("База продуктов");
+        JButton button3 = new JButton("<html><h3><font color=\"black\">База продуктов");
+        button3.setBounds(300, 290, 200, 50);
         button3.addActionListener(e -> {
             ProductBase dialog2 = new ProductBase();
             dialog2.setVisible(true);
         });
 
-        JButton Exit = new JButton("Выход");
-        Exit.setBounds(350, 500, 100, 40);
+        JButton Exit = new JButton("<html><h3><font color=\"black\">Выход");
+        Exit.setBounds(300, 370, 200, 50);
         Exit.addActionListener(e -> System.exit(1));
 
+        this.add(button1);
+        this.add(button2);
+        this.add(button3);
+        this.add(Exit);
 
-        panel.add(button1, gbc);
-        gbc.gridy++;
-
-        panel.add(button2, gbc);
-        gbc.gridy++;
-
-        panel.add(button3, gbc);
-        gbc.gridy++;
-
-        panel.add(Exit, gbc);
+        this.setLayout(null);
 
         this.addWindowListener(new WindowListener() {
 
