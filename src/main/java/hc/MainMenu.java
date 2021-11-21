@@ -51,7 +51,7 @@ public class MainMenu extends JFrame {
         JButton button3 = new JButton("<html><h3><font color=\"black\">База продуктов");
         button3.setBounds(300, 290, 200, 50);
         button3.addActionListener(e -> {
-            ProductBase dialog2 = new ProductBase();
+            ProductBase dialog2 = new ProductBase(productName,calories);
             dialog2.setVisible(true);
         });
 
