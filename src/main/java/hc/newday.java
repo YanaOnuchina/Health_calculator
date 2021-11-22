@@ -29,6 +29,16 @@ public class newday extends JDialog{
         Calculate.setBounds(520,400, 150,40);
         this.add(Calculate);
 
+        DefaultListModel<String> model = new DefaultListModel<>();
+        for(int i = 0; i < productName.size(); i++){
+            String string = String.format(productName.get(i));
+            model.addElement(string);
+        }
+        JList<String> list1 = new JList<>(model);
+        JScrollPane dungeon1 =  new JScrollPane(list1);
+        dungeon1.setBounds(100,100,150,300);
+        this.add(dungeon1);
+
         this.setLayout(null);
     }
 
