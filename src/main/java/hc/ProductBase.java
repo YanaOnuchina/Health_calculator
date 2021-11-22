@@ -45,21 +45,16 @@ public class ProductBase extends JDialog{
         newcal.setEditable(true);
         this.add(newcal);
 
-        Double[] calVan = new Double[calories.size()];
-        calories.toArray(calVan);
-        JList<Double> list2 = new JList<>(calVan);
+        DefaultListModel<String> model = new DefaultListModel<>();
+        model.addElement("Название         Калории");
+        for(int i = 0; i < productName.size(); i++){
+            String string = String.format("%s%30.30s",productName.get(i)+" / ", calories.get(i).toString());
+            model.addElement(string);
+        }
 
-
-        JScrollPane dungeon2 =  new JScrollPane(list2);
-        dungeon2.setBounds(420,200,200,300);
-        dungeon2.setEnabled(false);
-        this.add(dungeon2);
-
-        String[] Van = new String[productName.size()];
-        productName.toArray(Van);
-        JList<String> list1 = new JList<>(Van);
+        JList<String> list1 = new JList<>(model);
         JScrollPane dungeon1 =  new JScrollPane(list1);
-        dungeon1.setBounds(200,200,200,300);
+        dungeon1.setBounds(200,200,400,300);
         this.add(dungeon1);
 
         JButton save = new JButton("<html><h2><font color=\"black\">Добавить");
@@ -67,12 +62,7 @@ public class ProductBase extends JDialog{
         save.addActionListener(e ->{
         productName.add(newname.getText());
         calories.add(Double.parseDouble(newcal.getText()));
-          /*  String[] Van1 = new String[productName.size()];
-            productName.toArray(Van1);
-            JList<String> list11 = new JList<>(Van1);
-            dungeon1.add(list11);
-            dungeon1.validate(); */
-
+            model.addElement(newname.getText() + "   " + newcal.getText());
         });
         this.add(save);
         this.setLayout(null);
