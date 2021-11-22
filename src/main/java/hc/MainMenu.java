@@ -15,6 +15,7 @@ public class MainMenu extends JFrame {
 
     ArrayList<String> productName = new ArrayList<>();
     ArrayList<Double> calories = new ArrayList<>();
+    float norma = 0;
 
     public MainMenu() {
 
@@ -37,15 +38,15 @@ public class MainMenu extends JFrame {
         JButton button1 = new JButton("<html><h3><font color=\"black\">Начать новый день");
         button1.setBounds(300, 130, 200, 50);
         button1.addActionListener(e -> {
-            newday dialog = new newday();
+            newday dialog = new newday(productName,calories);
             dialog.setVisible(true);
         });
 
         JButton button2 = new JButton("<html><h3><font color=\"black\">Персональные данные");
         button2.setBounds(300, 210, 200, 50);
+        PersonalData dialog = new PersonalData(norma);
         button2.addActionListener(e -> {
-            PersonalData dialog = new PersonalData();
-            dialog.setVisible(false);
+            dialog.setVisible(true);
         });
 
         JButton button3 = new JButton("<html><h3><font color=\"black\">База продуктов");
@@ -77,13 +78,15 @@ public class MainMenu extends JFrame {
             public void windowClosing(WindowEvent e) {
                     try {
                         FileWriter fw = new FileWriter("Jabroni.txt",false);
+                        norma = dialog.gettingNorma();
+                        fw.write(Float.toString(norma));
+                        fw.append("\n");
                         for (int i = 0; i < productName.size(); i++) {
                             fw.write(productName.get(i));
                             fw.append("\n");
                             fw.write(String.valueOf(calories.get(i)));
                             fw.append("\n");
                         }
-
                         fw.close();
 
                     } catch (IOException ex) {
@@ -119,9 +122,11 @@ public class MainMenu extends JFrame {
         });
 
     }
+
     public void infoloading() throws IOException {
         FileReader fr = new FileReader("Jabroni.txt");
        try (Scanner scanner = new Scanner(fr)) {
+           norma = Float.parseFloat(scanner.nextLine());
            while (scanner.hasNext()) {
                productName.add(scanner.nextLine());
                calories.add(Double.parseDouble(scanner.nextLine()));

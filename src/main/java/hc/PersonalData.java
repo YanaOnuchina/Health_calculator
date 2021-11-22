@@ -32,7 +32,10 @@ public class PersonalData extends JDialog{
     private final JComboBox<Gender> BoxPol;
     private final JComboBox<Activity> BoxAct;
 
-    public PersonalData() {
+    float norma;
+
+    public PersonalData(float norma) {
+        this.norma = norma;
         this.setSize(800, 600);
         this.setLocation(500, 200);
         this.setResizable(false);
@@ -55,7 +58,6 @@ public class PersonalData extends JDialog{
         this.add(Rost);
         this.setLayout(null);
 
-
         JLabel vesText = new JLabel("<html><h2><font color=\"black\">Вес");
         this.add(vesText);
         vesText.setBounds(145,130,60,80);
@@ -63,7 +65,6 @@ public class PersonalData extends JDialog{
         Ves.setBounds(50,190,220,40);
         this.add(Ves);
         this.setLayout(null);
-
 
         JLabel ageText = new JLabel("<html><h2><font color=\"black\">Возраст");
         this.add(ageText);
@@ -90,7 +91,7 @@ public class PersonalData extends JDialog{
 
         this.setLayout(null);
 
-        JTextField calculateField = new JTextField();
+        JTextField calculateField = new JTextField(String.format("%.2f", this.norma));
         calculateField.setBounds(500,180,200,40);
         calculateField.setEditable(false);
         this.add(calculateField);
@@ -108,7 +109,10 @@ public class PersonalData extends JDialog{
 
         JButton Calculate = new JButton("<html><h2><font color=\"black\">Рассчитать");
         Calculate.setBounds(500,130, 200,40);
-        Calculate.addActionListener(e -> calculateField.setText(String.format("%.2f", getPerson().getNorma())));
+        Calculate.addActionListener(e -> {
+                this.norma = getPerson().getNorma();
+                calculateField.setText(String.format("%.2f", this.norma));
+        });
         this.add(Calculate);
         this.setLayout(null);
 
@@ -120,7 +124,7 @@ public class PersonalData extends JDialog{
 
         this.loadSavedData();
 
-        this.setVisible(true);
+
 
 
     }
@@ -148,6 +152,7 @@ public class PersonalData extends JDialog{
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(person);
             objectOutputStream.close();
+
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -162,5 +167,7 @@ public class PersonalData extends JDialog{
         person.setActivity((Activity) BoxAct.getSelectedItem());
         return person;
     }
-
+    float gettingNorma(){
+        return norma;
+    }
 }

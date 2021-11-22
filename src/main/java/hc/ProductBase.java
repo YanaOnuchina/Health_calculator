@@ -46,7 +46,7 @@ public class ProductBase extends JDialog{
         this.add(newcal);
 
         DefaultListModel<String> model = new DefaultListModel<>();
-        model.addElement("Название         Калории");
+
         for(int i = 0; i < productName.size(); i++){
             String string = String.format("%s%30.30s",productName.get(i)+" / ", calories.get(i).toString());
             model.addElement(string);
