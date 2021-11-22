@@ -105,7 +105,7 @@ public class PersonalData extends JDialog{
         JButton Graphic = new JButton("<html><h2><font color=\"black\">График"); /*ПОМЕНЯТЬ ЦВЕТ И РАЗМЕР*/
         Graphic.setBounds(500, 280, 200, 40);
         Graphic.addActionListener(e -> {
-            Graphic dialog = new Graphic();
+            Graphic dialog = new Graphic(allPersonParams);
             dialog.setVisible(true);
         });
         this.add(Graphic);
