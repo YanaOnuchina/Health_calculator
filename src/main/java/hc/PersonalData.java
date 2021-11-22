@@ -2,15 +2,19 @@ package hc;
 
 import hc.model.Activity;
 import hc.model.Gender;
-import hc.model.Person;
+import hc.model.PersonParam;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.GridBagLayout;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 
 public class PersonalData extends JDialog{
 
+    private List<PersonParam> allPersonParams = new ArrayList<>();
     public static final String FILE_NAME = "person.dat";
 
     private static final Gender[] GENDERS = {
@@ -31,6 +35,7 @@ public class PersonalData extends JDialog{
     private final JTextField Age;
     private final JComboBox<Gender> BoxPol;
     private final JComboBox<Activity> BoxAct;
+    private final JTextField calculateField;
 
     float norma;
 
@@ -91,7 +96,7 @@ public class PersonalData extends JDialog{
 
         this.setLayout(null);
 
-        JTextField calculateField = new JTextField(String.format("%.2f", this.norma));
+        calculateField = new JTextField(String.format("%.2f", this.norma));
         calculateField.setBounds(500,180,200,40);
         calculateField.setEditable(false);
         this.add(calculateField);
@@ -110,7 +115,7 @@ public class PersonalData extends JDialog{
         JButton Calculate = new JButton("<html><h2><font color=\"black\">Рассчитать");
         Calculate.setBounds(500,130, 200,40);
         Calculate.addActionListener(e -> {
-                this.norma = getPerson().getNorma();
+                this.norma = getPersonParamFromForm().getNorma();
                 calculateField.setText(String.format("%.2f", this.norma));
         });
         this.add(Calculate);
@@ -118,14 +123,11 @@ public class PersonalData extends JDialog{
 
         JButton save = new JButton("<html><h2><font color=\"black\">Сохранить");
         save.setBounds(500,400,200,40);
-        save.addActionListener(e -> savePersonData(getPerson()));
+        save.addActionListener(e -> savePersonData(getPersonParamFromForm()));
         this.add(save);
         this.setLayout(null);
 
         this.loadSavedData();
-
-
-
 
     }
 
@@ -135,22 +137,29 @@ public class PersonalData extends JDialog{
             if (exists) {
                 FileInputStream fis = new FileInputStream(FILE_NAME);
                 ObjectInputStream ois = new ObjectInputStream(fis);
-                Person person = (Person) ois.readObject();
-                Rost.setText(Float.toString(person.getHeight()));
-                Ves.setText(Float.toString(person.getWeight()));
-                Age.setText(Integer.toString(person.getAge()));
-
+                allPersonParams = (List<PersonParam>) ois.readObject();
+                if (!allPersonParams.isEmpty()) {
+                    PersonParam personParam = allPersonParams.get(allPersonParams.size() - 1);
+                    Rost.setText(Float.toString(personParam.getHeight()));
+                    Ves.setText(Float.toString(personParam.getWeight()));
+                    Age.setText(Integer.toString(personParam.getAge()));
+                    BoxPol.setSelectedItem(personParam.getGender());
+                    BoxAct.setSelectedItem(personParam.getActivity());
+                    this.norma = getPersonParamFromForm().getNorma();
+                    calculateField.setText(String.format("%.2f", this.norma));
+                }
             }
         } catch (IOException | ClassNotFoundException ex) {
             ex.printStackTrace();
         }
     }
 
-    private void savePersonData(Person person) {
+    private void savePersonData(PersonParam personParam) {
         try {
             OutputStream fileOutputStream = new FileOutputStream(FILE_NAME);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(person);
+            allPersonParams.add(personParam);
+            objectOutputStream.writeObject(allPersonParams);
             objectOutputStream.close();
 
         } catch (IOException ex) {
@@ -158,14 +167,15 @@ public class PersonalData extends JDialog{
         }
     }
 
-    private Person getPerson() {
-        Person person = new Person();
-        person.setHeight(Float.parseFloat(Rost.getText()));
-        person.setWeight(Float.parseFloat(Ves.getText()));
-        person.setAge(Integer.parseInt(Age.getText()));
-        person.setGender((Gender) BoxPol.getSelectedItem());
-        person.setActivity((Activity) BoxAct.getSelectedItem());
-        return person;
+    private PersonParam getPersonParamFromForm() {
+        PersonParam personParam = new PersonParam();
+        personParam.setHeight(Float.parseFloat(Rost.getText()));
+        personParam.setWeight(Float.parseFloat(Ves.getText()));
+        personParam.setAge(Integer.parseInt(Age.getText()));
+        personParam.setGender((Gender) BoxPol.getSelectedItem());
+        personParam.setActivity((Activity) BoxAct.getSelectedItem());
+        personParam.setDate(new Date());
+        return personParam;
     }
     float gettingNorma(){
         return norma;

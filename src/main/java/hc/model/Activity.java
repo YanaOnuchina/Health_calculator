@@ -1,6 +1,7 @@
 package hc.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Activity implements Serializable {
 
@@ -15,6 +16,11 @@ public class Activity implements Serializable {
     @Override
     public String toString() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof Activity && Objects.equals(name, ((Activity) obj).name);
     }
 
     public float getCoefficient() {

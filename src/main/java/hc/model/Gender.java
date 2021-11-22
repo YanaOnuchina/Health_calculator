@@ -1,6 +1,8 @@
 package hc.model;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.Objects;
 
 public class Gender implements Serializable {
     final private int value;
@@ -19,4 +21,10 @@ public class Gender implements Serializable {
     public String toString() {
         return name;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof Gender && Objects.equals(name, ((Gender) obj).name);
+    }
+
 }

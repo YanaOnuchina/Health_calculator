@@ -1,16 +1,18 @@
 package hc.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
-public class Person implements Serializable {
+public class PersonParam implements Serializable {
 
     private float weight;
     private float height;
     private int age;
     private Gender gender;
     private Activity activity;
+    private Date date;
 
-    public Person() {}
+    public PersonParam() {}
 
     public float getWeight() {
         return weight;
@@ -50,6 +52,12 @@ public class Person implements Serializable {
 
     public void setActivity(Activity activity) {
         this.activity = activity;
+    }
+
+    public void setDate(Date date) {this.date = date;}
+
+    public Date getDate(){
+        return date;
     }
 
     public float getNorma() {
