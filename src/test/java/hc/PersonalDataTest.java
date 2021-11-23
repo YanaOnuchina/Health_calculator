@@ -3,11 +3,13 @@ package hc;
 import hc.model.Activity;
 import hc.model.Gender;
 import hc.model.PersonParam;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PersonalDataTest {
 
+    @Disabled
     @Test
     void getPersonParamFromForm() {
         float norma = 0;
