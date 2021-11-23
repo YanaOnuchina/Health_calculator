@@ -23,7 +23,7 @@ public class PersonalData extends JDialog{
     };
 
     private static final Activity[] ACTIVITIES = {
-            new Activity("Отсутствует или минимальная", 1.2f),
+            new Activity("Минимальная", 1.2f),
             new Activity("Тренировка 3 раза в неделю", 1.38f),
             new Activity("Тренировка 5 раз в неделю", 1.46f),
             new Activity("Тренировка каждый день", 1.64f),
@@ -40,6 +40,7 @@ public class PersonalData extends JDialog{
     float norma;
 
     public PersonalData(float norma) {
+        this.setTitle("Расчет калорий");
         this.norma = norma;
         this.setSize(800, 600);
         this.setLocation(500, 200);
@@ -48,65 +49,78 @@ public class PersonalData extends JDialog{
 
         JPanel panel = new JPanel();
         Font font1 = new Font("Georgia",Font.BOLD, 15);
+        Font spisok = new Font("Bahnschrift",Font.BOLD, 14);
+        Font numbers = new Font("Bahnschrift SemiBold",Font.BOLD, 17);
         panel.setLayout(new GridBagLayout());
-        panel.setFont(font1);
         getContentPane().add(panel);
 
-        JButton cancel = new JButton("<html><h2><font color=\"black\">Отмена"); /*ПОМЕНЯТЬ ЦВЕТ И РАЗМЕР*/
-        cancel.setBounds(500, 450, 200, 40);
-        this.add(cancel);
-        cancel.addActionListener(e -> this.dispose());
-
         JLabel rostText = new JLabel("<html><h2><font color=\"black\">Рост");
+        rostText.setFont(font1);
         this.add(rostText);
-        rostText.setBounds(145,40,60,80);
+        rostText.setBounds(138,20,60,80);
         Rost = new JTextField();
-        Rost.setBounds(50,100,220,40);
+        Rost.setBounds(50,80,220,40);
+        Rost.setBorder(BorderFactory.createLineBorder(new Color(138, 242, 223),3,false));
+        Rost.setFont(numbers);
         this.add(Rost);
         this.setLayout(null);
 
         JLabel vesText = new JLabel("<html><h2><font color=\"black\">Вес");
+        vesText.setFont(font1);
         this.add(vesText);
-        vesText.setBounds(145,130,60,80);
+        vesText.setBounds(143,105,60,80);
         Ves = new JTextField();
-        Ves.setBounds(50,190,220,40);
+        Ves.setBounds(50,165,220,40);
+        Ves.setBorder(BorderFactory.createLineBorder(new Color(138, 242, 223),3,false));
+        Ves.setFont(numbers);
         this.add(Ves);
         this.setLayout(null);
 
         JLabel ageText = new JLabel("<html><h2><font color=\"black\">Возраст");
+        ageText.setFont(font1);
         this.add(ageText);
-        ageText.setBounds(125,220,90,80);
+        ageText.setBounds(120,190,90,80);
         Age = new JTextField();
-        Age.setBounds(50,280,220,40);
+        Age.setBounds(50,250,220,40);
+        Age.setBorder(BorderFactory.createLineBorder(new Color(138, 242, 223),3,false));
+        Age.setFont(numbers);
         this.add(Age);
         this.setLayout(null);
 
         JLabel polText = new JLabel("<html><h2><font color=\"black\">Пол");
+        polText.setFont(font1);
         this.add(polText);
-        polText.setBounds(145,310,60,80);
+        polText.setBounds(143,275,60,80);
         BoxPol = new JComboBox<>(GENDERS);
-        BoxPol.setBounds(50,370,220,40);
+        BoxPol.setBounds(50,335,220,40);
+        BoxPol.setFont(spisok);
         this.add(BoxPol);
         this.setLayout(null);
 
         JLabel actText = new JLabel("<html><h2><font color=\"black\">Активность");
+        actText.setFont(font1);
         this.add(actText);
-        actText.setBounds(115,400,110,80);
+        actText.setBounds(105,360,130,80);
         BoxAct = new JComboBox<>(ACTIVITIES);
-        BoxAct.setBounds(50,460,220,40);
+        BoxAct.setBounds(50,420,220,40);
+        BoxAct.setFont(spisok);
         this.add(BoxAct);
 
         this.setLayout(null);
 
         calculateField = new JTextField(String.format("%.2f", this.norma));
         calculateField.setBounds(500,180,200,40);
+        calculateField.setBackground(new Color(255,255,255));
+        calculateField.setFont(numbers);
+        calculateField.setBorder(BorderFactory.createLineBorder(new Color(177, 106, 252),3,false));
         calculateField.setEditable(false);
         this.add(calculateField);
         this.setLayout(null);
 
         JButton Graphic = new JButton("<html><h2><font color=\"black\">График"); /*ПОМЕНЯТЬ ЦВЕТ И РАЗМЕР*/
-        Graphic.setBounds(500, 280, 200, 40);
-        Graphic.setBackground(new Color(255 , 235 , 205));
+        Graphic.setBounds(500, 265, 200, 40);
+        Graphic.setBackground(new Color(235, 246, 252));
+        Graphic.setBorder(BorderFactory.createLineBorder(new Color(149, 175, 252),4,true));
         Graphic.setFont(font1);
         Graphic.addActionListener(e -> {
             Graphic dialog = new Graphic(allPersonParams);
@@ -119,7 +133,8 @@ public class PersonalData extends JDialog{
         JButton Calculate = new JButton("<html><h2><font color=\"black\">Рассчитать");
         Calculate.setFont(font1);
         Calculate.setBounds(500,130, 200,40);
-        Calculate.setBackground(Color.white);
+        Calculate.setBorder(BorderFactory.createLineBorder(new Color(149, 175, 252),4,true));
+        Calculate.setBackground(new Color(235, 246, 252));
         Calculate.setFont(font1);
         Calculate.addActionListener(e -> {
                 this.norma = getPersonParamFromForm().getNorma();
@@ -129,12 +144,25 @@ public class PersonalData extends JDialog{
         this.setLayout(null);
 
         JButton save = new JButton("<html><h2><font color=\"black\">Сохранить");
-        save.setBounds(500,400,200,40);
+        save.setBounds(500,350,200,40);
+        save.setBackground(new Color(215, 252, 222));
+        save.setBorder(BorderFactory.createLineBorder(new Color(0,250,154),4,true));
+        save.setForeground(new Color(0,0,0));
         save.setFont(font1);
         save.addActionListener(e -> savePersonData(getPersonParamFromForm()));
         this.add(save);
         this.setLayout(null);
 
+        JButton cancel = new JButton("<html><h2><font color=\"black\">Отмена");
+        cancel.setBackground(new Color(250, 222, 222));
+        cancel.setBorder(BorderFactory.createLineBorder(new Color(255,99,71),4,true));
+        cancel.setFont(font1);
+        cancel.setForeground(new Color(000));
+        cancel.setBounds(500, 405, 200, 40);
+        this.add(cancel);
+        cancel.addActionListener(e -> this.dispose());
+
+        this.setLayout(null);
         this.loadSavedData();
 
     }

@@ -13,6 +13,7 @@ import java.util.Scanner;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JFrame;
+import javax.swing.border.BevelBorder;
 
 
 public class MainMenu extends JFrame {
@@ -29,7 +30,7 @@ public class MainMenu extends JFrame {
             e.printStackTrace();
         }
 
-        this.setTitle("Health calculator 2.0");
+        this.setTitle("Health Calculator");
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setSize(800, 600);
         this.setLocation(500, 200);
@@ -39,40 +40,47 @@ public class MainMenu extends JFrame {
         panel.setLayout(new GridBagLayout());
         getContentPane().add(panel);
 
-        Font font = new Font("Georgia",Font.BOLD, 14);
+        Font font15 = new Font("Georgia",Font.BOLD, 20);
 
-        JButton button1 = new JButton("<html><font color=\"black\">Начать новый день");
+        JButton button1 = new JButton("<html>Начать");
         button1.setBounds(292, 130, 216, 50);
-        button1.setBackground(new Color(0,250,154));
-        button1.setFont(font);
+        button1.setBackground(new Color(215, 252, 235));
+        button1.setBorder(BorderFactory.createLineBorder(new Color(0,250,154),4,true));
+        button1.setForeground(new Color(0,0,0));
+        button1.setFont(font15);
+
 
         button1.addActionListener(e -> {
             newday dialog = new newday(productName,calories, norma);
             dialog.setVisible(true);
         });
 
-        JButton button2 = new JButton("<html><font color=\"black\">Персональные данные");
+        JButton button2 = new JButton("<html><font color=\"black\">Расчёт калорий");
         button2.setBounds(292, 210, 216, 50);
-        button2.setBackground(Color.white);
-        button2.setFont(font);
+        button2.setBackground(new Color(235, 246, 252));
+        button2.setBorder(BorderFactory.createLineBorder(new Color(149, 175, 252),4,true));
+        button2.setFont(font15);
 
         PersonalData dialog = new PersonalData(norma);
         button2.addActionListener(e -> {
             dialog.setVisible(true);
         });
 
-        JButton button3 = new JButton("<html><font color=\"black\">База продуктов");
+        JButton button3 = new JButton("<html><font color=\"black\">Список продуктов");
         button3.setBounds(292, 290, 216, 50);
-        button3.setBackground(Color.white);
-        button3.setFont(font);
+        button3.setBackground(new Color(235, 246, 252));
+        button3.setBorder(BorderFactory.createLineBorder(new Color(149, 175, 252),4,true));
+        button3.setFont(font15);
         button3.addActionListener(e -> {
             ProductBase dialog2 = new ProductBase(productName,calories);
             dialog2.setVisible(true);
         });
 
         JButton Exit = new JButton("<html><font color=\"black\">Выход");
-        Exit.setBackground(new Color(255,99,71));
-        Exit.setFont(font);
+        Exit.setBackground(new Color(250, 222, 222));
+        Exit.setBorder(BorderFactory.createLineBorder(new Color(255,99,71),4,true));
+        Exit.setFont(font15);
+        Exit.setForeground(new Color(000));
         Exit.setBounds(292, 370, 216, 50);
         Exit.addActionListener(e -> System.exit(1));
 
