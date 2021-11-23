@@ -17,25 +17,18 @@ public class PersonalData extends JDialog{
     private List<PersonParam> allPersonParams = new ArrayList<>();
     public static final String FILE_NAME = "person.dat";
 
-    private static final Gender[] GENDERS = {
-            new Gender(-161, "Мужской"),
-            new Gender(5, "Женский")
-    };
+    private static final Gender[] GENDERS = { Gender.MALE, Gender.FEMALE };
 
     private static final Activity[] ACTIVITIES = {
-            new Activity("Отсутствует или минимальная", 1.2f),
-            new Activity("Тренировка 3 раза в неделю", 1.38f),
-            new Activity("Тренировка 5 раз в неделю", 1.46f),
-            new Activity("Тренировка каждый день", 1.64f),
-            new Activity("Физическая работа", 1.9f)
+            Activity.LOWEST, Activity.LOW, Activity.MEDIUM, Activity.HIGH, Activity.HIGHEST
     };
 
-    private final JTextField Rost;
-    private final JTextField Ves;
-    private final JTextField Age;
-    private final JComboBox<Gender> BoxPol;
-    private final JComboBox<Activity> BoxAct;
-    private final JTextField calculateField;
+    final JTextField Rost;
+    final JTextField Ves;
+    final JTextField Age;
+    final JComboBox<Gender> BoxPol;
+    final JComboBox<Activity> BoxAct;
+    final JTextField calculateField;
 
     float norma;
 
@@ -175,7 +168,7 @@ public class PersonalData extends JDialog{
         }
     }
 
-    private PersonParam getPersonParamFromForm() {
+    PersonParam getPersonParamFromForm() {
         PersonParam personParam = new PersonParam();
         personParam.setHeight(Float.parseFloat(Rost.getText()));
         personParam.setWeight(Float.parseFloat(Ves.getText()));
