@@ -5,12 +5,12 @@ import hc.model.Gender;
 import hc.model.PersonParam;
 
 import javax.swing.*;
-import java.awt.GridBagLayout;
+import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+import java.awt.Color;
 
 public class PersonalData extends JDialog{
 
@@ -47,7 +47,9 @@ public class PersonalData extends JDialog{
         this.setModal(true);
 
         JPanel panel = new JPanel();
+        Font font1 = new Font("Georgia",Font.BOLD, 15);
         panel.setLayout(new GridBagLayout());
+        panel.setFont(font1);
         getContentPane().add(panel);
 
         JButton cancel = new JButton("<html><h2><font color=\"black\">Отмена"); /*ПОМЕНЯТЬ ЦВЕТ И РАЗМЕР*/
@@ -104,6 +106,8 @@ public class PersonalData extends JDialog{
 
         JButton Graphic = new JButton("<html><h2><font color=\"black\">График"); /*ПОМЕНЯТЬ ЦВЕТ И РАЗМЕР*/
         Graphic.setBounds(500, 280, 200, 40);
+        Graphic.setBackground(new Color(255 , 235 , 205));
+        Graphic.setFont(font1);
         Graphic.addActionListener(e -> {
             Graphic dialog = new Graphic(allPersonParams);
             dialog.setVisible(true);
@@ -113,7 +117,10 @@ public class PersonalData extends JDialog{
 
 
         JButton Calculate = new JButton("<html><h2><font color=\"black\">Рассчитать");
+        Calculate.setFont(font1);
         Calculate.setBounds(500,130, 200,40);
+        Calculate.setBackground(Color.white);
+        Calculate.setFont(font1);
         Calculate.addActionListener(e -> {
                 this.norma = getPersonParamFromForm().getNorma();
                 calculateField.setText(String.format("%.2f", this.norma));
@@ -123,6 +130,7 @@ public class PersonalData extends JDialog{
 
         JButton save = new JButton("<html><h2><font color=\"black\">Сохранить");
         save.setBounds(500,400,200,40);
+        save.setFont(font1);
         save.addActionListener(e -> savePersonData(getPersonParamFromForm()));
         this.add(save);
         this.setLayout(null);

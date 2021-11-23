@@ -10,6 +10,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.JFrame;
+
 
 public class MainMenu extends JFrame {
 
@@ -35,29 +39,41 @@ public class MainMenu extends JFrame {
         panel.setLayout(new GridBagLayout());
         getContentPane().add(panel);
 
-        JButton button1 = new JButton("<html><h3><font color=\"black\">Начать новый день");
-        button1.setBounds(300, 130, 200, 50);
+        Font font = new Font("Georgia",Font.BOLD, 14);
+
+        JButton button1 = new JButton("<html><font color=\"black\">Начать новый день");
+        button1.setBounds(292, 130, 216, 50);
+        button1.setBackground(new Color(0,250,154));
+        button1.setFont(font);
+
         button1.addActionListener(e -> {
-            newday dialog = new newday(productName,calories);
+            newday dialog = new newday(productName,calories, norma);
             dialog.setVisible(true);
         });
 
-        JButton button2 = new JButton("<html><h3><font color=\"black\">Персональные данные");
-        button2.setBounds(300, 210, 200, 50);
+        JButton button2 = new JButton("<html><font color=\"black\">Персональные данные");
+        button2.setBounds(292, 210, 216, 50);
+        button2.setBackground(Color.white);
+        button2.setFont(font);
+
         PersonalData dialog = new PersonalData(norma);
         button2.addActionListener(e -> {
             dialog.setVisible(true);
         });
 
-        JButton button3 = new JButton("<html><h3><font color=\"black\">База продуктов");
-        button3.setBounds(300, 290, 200, 50);
+        JButton button3 = new JButton("<html><font color=\"black\">База продуктов");
+        button3.setBounds(292, 290, 216, 50);
+        button3.setBackground(Color.white);
+        button3.setFont(font);
         button3.addActionListener(e -> {
             ProductBase dialog2 = new ProductBase(productName,calories);
             dialog2.setVisible(true);
         });
 
-        JButton Exit = new JButton("<html><h3><font color=\"black\">Выход");
-        Exit.setBounds(300, 370, 200, 50);
+        JButton Exit = new JButton("<html><font color=\"black\">Выход");
+        Exit.setBackground(new Color(255,99,71));
+        Exit.setFont(font);
+        Exit.setBounds(292, 370, 216, 50);
         Exit.addActionListener(e -> System.exit(1));
 
         this.add(button1);
