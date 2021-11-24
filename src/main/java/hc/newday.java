@@ -10,7 +10,9 @@ public class newday extends JDialog{
     int i;
     double calculate =0;
     double val;
-
+    double vel;
+    double gimnastica;
+    double beg;
 
     public newday(ArrayList<String> productName,ArrayList<Double> calories,float norma) {
         this.setTitle("Начать");
@@ -49,7 +51,7 @@ public class newday extends JDialog{
 
         JLabel text = new JLabel();
         this.add(text);
-        text.setBounds(250,70,250,80);
+        text.setBounds(350,20,450,180);
 
         JButton cancel = new JButton("<html><h2><font color=\"black\">Назад");
         cancel.setBounds(20, 20, 100, 40);
@@ -65,11 +67,17 @@ public class newday extends JDialog{
         this.add(Calculate);
         Calculate.addActionListener(e -> {
             if (calculate <= norma) {
-                text.setText("<html><h2><font color=\"black\">Молодец! Сегодня ты сжег" + "калорий"); /* Вставить разницу калорий*/
+                text.setText("<html><h2><font color=\"black\">Молодец! Сегодня ты уложился в норму. Так держать! На экране видна твоя разница калорий, продолжай в том же духе, но не перестарайся :)");
                 text.setFont(font1);
                 proverka.setText(Double.toString(norma-calculate));
             }else {
-                text.setText("<html><h2><font color=\"black\">Атата! Кушай меньше!");
+                vel =(60*(calculate-norma))/350;
+                vel = Math.round(vel);
+                gimnastica =(60*(calculate-norma))/260;
+                gimnastica = Math.round(gimnastica);
+                beg =(60*(calculate-norma))/550;
+                beg = Math.round(beg);
+                text.setText("<html><h2><font color=\"black\">Эх, сегодня у твоего желудка не лучший день. Ты явно перестарался с обедом, признавайся. На экране видна твоя разница, а именно лишние калории. Вот несколько способов сжечь эти калории: "+ vel+" минут езды на велосипеде, "+gimnastica+" минут гимнастики или "+beg+" минут бега");
                 text.setFont(font1);
                 proverka.setText(Double.toString(calculate-norma));
             }
