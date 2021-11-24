@@ -3,7 +3,7 @@ package hc.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class PersonParam implements Serializable {
+public class PersonParam implements Serializable, Cloneable {
 
     private float weight;
     private float height;
@@ -62,5 +62,13 @@ public class PersonParam implements Serializable {
 
     public float getNorma() {
         return activity.getCoefficient() * (weight*10 + height*6.25f - age*5 + gender.getValue());
+    }
+
+    public PersonParam clone() {
+        try {
+            return (PersonParam) super.clone();
+        } catch (CloneNotSupportedException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 }

@@ -1,10 +1,13 @@
 package hc.model;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Objects;
 
 public class Gender implements Serializable {
+
+    public static final Gender MALE = new Gender(-161, "Мужской");
+    public static final Gender FEMALE = new Gender(5, "Женский");
+
     final private int value;
     final private String name;
 
