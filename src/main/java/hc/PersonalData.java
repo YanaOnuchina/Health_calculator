@@ -30,12 +30,12 @@ public class PersonalData extends JDialog{
             new Activity("Физическая работа", 1.9f)
     };
 
-    private final JTextField Rost;
-    private final JTextField Ves;
-    private final JTextField Age;
-    private final JComboBox<Gender> BoxPol;
-    private final JComboBox<Activity> BoxAct;
-    private final JTextField calculateField;
+     final JTextField Rost;
+     final JTextField Ves;
+     final JTextField Age;
+     final JComboBox<Gender> BoxPol;
+     final JComboBox<Activity> BoxAct;
+     final JTextField calculateField;
 
     float norma;
 
@@ -203,7 +203,7 @@ public class PersonalData extends JDialog{
         }
     }
 
-    private PersonParam getPersonParamFromForm() {
+    public PersonParam getPersonParamFromForm() {
         PersonParam personParam = new PersonParam();
         personParam.setHeight(Float.parseFloat(Rost.getText()));
         personParam.setWeight(Float.parseFloat(Ves.getText()));
