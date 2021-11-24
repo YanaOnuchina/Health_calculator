@@ -8,6 +8,8 @@ import java.awt.event.WindowListener;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.awt.Color;
@@ -62,9 +64,7 @@ public class MainMenu extends JFrame {
         button2.setFont(font15);
 
         PersonalData dialog = new PersonalData(norma);
-        button2.addActionListener(e -> {
-            dialog.setVisible(true);
-        });
+        button2.addActionListener(e -> dialog.setVisible(true));
 
         JButton button3 = new JButton("<html><font color=\"black\">Список продуктов");
         button3.setBounds(292, 290, 216, 50);
@@ -80,7 +80,7 @@ public class MainMenu extends JFrame {
         Exit.setBackground(new Color(250, 222, 222));
         Exit.setBorder(BorderFactory.createLineBorder(new Color(255,99,71),4,true));
         Exit.setFont(font15);
-        Exit.setForeground(new Color(000));
+        Exit.setForeground(new Color(0));
         Exit.setBounds(292, 370, 216, 50);
         Exit.addActionListener(e -> System.exit(1));
 
@@ -148,8 +148,8 @@ public class MainMenu extends JFrame {
     }
 
     public void infoloading() throws IOException {
-        FileReader fr = new FileReader("Jabroni.txt");
-       try (Scanner scanner = new Scanner(fr)) {
+        FileReader fr = new FileReader("Jabroni.txt", StandardCharsets.UTF_8);
+        try (Scanner scanner = new Scanner(fr)) {
            norma = Float.parseFloat(scanner.nextLine());
            while (scanner.hasNext()) {
                productName.add(scanner.nextLine());
