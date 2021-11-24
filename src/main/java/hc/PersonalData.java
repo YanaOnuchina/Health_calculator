@@ -18,8 +18,8 @@ public class PersonalData extends JDialog{
     public static final String FILE_NAME = "person.dat";
 
     private static final Gender[] GENDERS = {
-            new Gender(-161, "Мужской"),
-            new Gender(5, "Женский")
+            new Gender(5, "Мужской"),
+            new Gender(-161, "Женский")
     };
 
     private static final Activity[] ACTIVITIES = {

@@ -13,6 +13,7 @@ public class newday extends JDialog{
 
 
     public newday(ArrayList<String> productName,ArrayList<Double> calories,float norma) {
+        this.setTitle("Начать");
         this.setSize(800, 600);
         this.setLocation(500,200);
         this.setResizable(false);
@@ -35,11 +36,16 @@ public class newday extends JDialog{
 
         JLabel sravn = new JLabel();
         this.add(sravn);
-        sravn.setBounds(600,300,250,80);
+        sravn.setBounds(360,320,348,80);
+        sravn.setFont(font1);
+        sravn.setForeground(new Color(150,10,10));
 
         JLabel sravn1 = new JLabel();
         this.add(sravn1);
-        sravn1.setBounds(350,250,180,80);
+        sravn1.setBounds(360,340,348,80);
+        sravn1.setFont(font1);
+        sravn1.setFont(font1);
+        sravn1.setForeground(new Color(150,10,10));
 
         JLabel text = new JLabel();
         this.add(text);
@@ -75,7 +81,7 @@ public class newday extends JDialog{
         }
         JList<String> list1 = new JList<>(model);
         JScrollPane dungeon1 =  new JScrollPane(list1);
-        dungeon1.setBounds(100,170,170,300);
+        dungeon1.setBounds(90,170,220,300);
         dungeon1.setBorder(BorderFactory.createLineBorder(new Color(149, 175, 252),3,true));
         dungeon1.setFont(spisok);
         this.add(dungeon1);
@@ -88,9 +94,9 @@ public class newday extends JDialog{
         JLabel products = new JLabel("<html><font color=\"black\">Продукты");
         products.setFont(font2);
         this.add(products);
-        products.setBounds(125,110,130,80);
+        products.setBounds(145,110,130,80);
 
-        JLabel ostatok = new JLabel("<html><font color=\"black\">Остаток");
+        JLabel ostatok = new JLabel("<html><font color=\"black\">Разница");
         ostatok.setFont(font2);
         this.add(ostatok);
         ostatok.setBounds(550,195,200,80);
@@ -112,10 +118,10 @@ public class newday extends JDialog{
         saveb.addActionListener(e -> {
            try{ i = list1.getSelectedIndex();}catch(Exception m){}
             if (i == -1)  {
-                sravn.setText("Вы не выбрали ни одного продукта");
+                sravn.setText("Вы не выбрали ни одного продукта!");
 
             }
-            try{val = Double.parseDouble(ncalories.getText());} catch (Exception k){sravn1.setText("Вы ввели неверное значение в поле");}
+            try{val = Double.parseDouble(ncalories.getText());} catch (Exception k){sravn1.setText("Вы ввели неверное значение в поле!");}
             calculate =calculate+ (calories.get(i)/100)*val;
             sravn1.setText("");
             sravn.setText("");

@@ -52,9 +52,14 @@ public class ProductBase extends JDialog{
         JLabel products = new JLabel("<html><font color=\"black\">Продукты");
         products.setFont(bigname);
         this.add(products);
-        products.setBounds(170,86,150,80);
+        products.setBounds(170,65,150,80);
 
-        JLabel calorlable = new JLabel("<html><h2><font color=\"black\">Ккал/100 г.");
+        JLabel productn = new JLabel("<html><font color=\"black\">Название ( Ккал/100 г. )");
+        productn.setFont(font1);
+        this.add(productn);
+        productn.setBounds(37,96,350,80);
+
+        JLabel calorlable = new JLabel("<html><h2><font color=\"black\">Ккал/100г.");
         calorlable.setFont(font1);
         this.add(calorlable);
         calorlable.setBounds(625,200,150,80);
@@ -69,7 +74,7 @@ public class ProductBase extends JDialog{
         DefaultListModel<String> model = new DefaultListModel<>();
 
         for(int i = 0; i < productName.size(); i++){
-            String string = String.format("%s%30.30s",productName.get(i), calories.get(i).toString());
+            String string = String.format(productName.get(i) + " ( " + calories.get(i).toString()+ " ) ");
             model.addElement(string);
         }
 
@@ -88,7 +93,7 @@ public class ProductBase extends JDialog{
         save.addActionListener(e ->{
         productName.add(newname.getText());
         calories.add(Double.parseDouble(newcal.getText()));
-            model.addElement(newname.getText() + "   " + newcal.getText());
+            model.addElement(newname.getText() + " ( " + newcal.getText() + " )  ");
         });
         this.add(save);
         this.setLayout(null);
