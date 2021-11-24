@@ -13,6 +13,7 @@ public class newday extends JDialog{
     double vel;
     double gimnastica;
     double beg;
+    double num;
 
     public newday(ArrayList<String> productName,ArrayList<Double> calories,float norma) {
         this.setTitle("Начать");
@@ -51,7 +52,7 @@ public class newday extends JDialog{
 
         JLabel text = new JLabel();
         this.add(text);
-        text.setBounds(350,20,450,180);
+        text.setBounds(340,20,450,180);
 
         JButton cancel = new JButton("<html><h2><font color=\"black\">Назад");
         cancel.setBounds(20, 20, 100, 40);
@@ -61,15 +62,26 @@ public class newday extends JDialog{
         this.add(cancel);
         cancel.addActionListener(e -> this.dispose());
 
+        JTextField ncalories = new JTextField();
+        ncalories.setBounds(350,250,150,40);
+        ncalories.setBorder(BorderFactory.createLineBorder(new Color(177, 106, 252),3,false));
+        ncalories.setEditable(true);
+        this.add(ncalories);
+
         JButton Calculate = new JButton("<html><h2><font color=\"black\">Рассчитать");
         Calculate.setBounds(520,300, 150,40);
+        Calculate.setBackground(new Color(215, 252, 235));
+        Calculate.setBorder(BorderFactory.createLineBorder(new Color(0,250,154),4,true));
         Calculate.setFont(font1);
         this.add(Calculate);
         Calculate.addActionListener(e -> {
             if (calculate <= norma) {
                 text.setText("<html><h2><font color=\"black\">Молодец! Сегодня ты уложился в норму. Так держать! На экране видна твоя разница калорий, продолжай в том же духе, но не перестарайся :)");
                 text.setFont(font1);
-                proverka.setText(Double.toString(norma-calculate));
+                num = Math.round((norma-calculate)*100);
+                num = num/100;
+                proverka.setText(Double.toString(num));
+                proverka.setBorder(BorderFactory.createLineBorder(new Color(0,250,154),3,false));
             }else {
                 vel =(60*(calculate-norma))/350;
                 vel = Math.round(vel);
@@ -77,9 +89,12 @@ public class newday extends JDialog{
                 gimnastica = Math.round(gimnastica);
                 beg =(60*(calculate-norma))/550;
                 beg = Math.round(beg);
-                text.setText("<html><h2><font color=\"black\">Эх, сегодня у твоего желудка не лучший день. Ты явно перестарался с обедом, признавайся. На экране видна твоя разница, а именно лишние калории. Вот несколько способов сжечь эти калории: "+ vel+" минут езды на велосипеде, "+gimnastica+" минут гимнастики или "+beg+" минут бега");
+                text.setText("<html><h2><font color=\"black\">Эх, сегодня у твоего желудка не лучший день. Ты явно перестарался с обедом, признавайся. На экране видна твоя разница, а именно лишние калории. Вот несколько способов сжечь эти калории: "+ vel+" минут(-ы) езды на велосипеде, "+gimnastica+" минут(-ы) гимнастики или "+beg+" минут(-ы) бега");
                 text.setFont(font1);
-                proverka.setText(Double.toString(calculate-norma));
+                num = Math.round((calculate - norma)*100);
+                num = num/100;
+                proverka.setText(Double.toString(num));
+                proverka.setBorder(BorderFactory.createLineBorder(new Color(255,99,71),3,false));
             }
         });
         DefaultListModel<String> model = new DefaultListModel<>();
@@ -89,7 +104,7 @@ public class newday extends JDialog{
         }
         JList<String> list1 = new JList<>(model);
         JScrollPane dungeon1 =  new JScrollPane(list1);
-        dungeon1.setBounds(90,170,220,300);
+        dungeon1.setBounds(40,170,280,300);
         dungeon1.setBorder(BorderFactory.createLineBorder(new Color(149, 175, 252),3,true));
         dungeon1.setFont(spisok);
         this.add(dungeon1);
@@ -102,20 +117,12 @@ public class newday extends JDialog{
         JLabel products = new JLabel("<html><font color=\"black\">Продукты");
         products.setFont(font2);
         this.add(products);
-        products.setBounds(145,110,130,80);
+        products.setBounds(120,110,130,80);
 
         JLabel ostatok = new JLabel("<html><font color=\"black\">Разница");
         ostatok.setFont(font2);
         this.add(ostatok);
         ostatok.setBounds(550,195,200,80);
-
-        JTextField ncalories = new JTextField();
-        ncalories.setBounds(350,250,150,40);
-        ncalories.setBorder(BorderFactory.createLineBorder(new Color(177, 106, 252),3,false));
-        ncalories.setEditable(true);
-        this.add(ncalories);
-
-
 
         JButton saveb = new JButton("<html><h2><font color=\"black\">Добавить");
         saveb.setBounds(350, 300, 150, 40);
