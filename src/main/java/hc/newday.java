@@ -134,7 +134,6 @@ public class newday extends JDialog{
             sravn1.setText("");
             sravn.setText("");
         });
-
         this.setLayout(null);
     }
 
