@@ -2,7 +2,12 @@ package hc.model;
 
 import java.io.Serializable;
 import java.util.Date;
-
+/**
+ * The class contains all methods for personal parameters.
+ *
+ * @author Onuchina Yana.
+ * @version 1.0.
+ */
 public class PersonParam implements Serializable, Cloneable {
 
     private float weight;

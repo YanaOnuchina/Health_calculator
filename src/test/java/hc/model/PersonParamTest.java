@@ -2,7 +2,9 @@ package hc.model;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-
+/**
+ * Tester class.
+ */
 class PersonParamTest {
 
     static final PersonParam NORMAL_PERSON = new PersonParam() {{

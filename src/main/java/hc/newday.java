@@ -5,6 +5,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * The class contains methods and objects for creating a separate window of new day calculation.
+ *
+ * @author Matoshka Ivan, Mityulya Evgeniy, Onuchina Yana.
+ * @version 1.0.
+ */
 public class newday extends JDialog{
 
     int i;
@@ -15,6 +21,13 @@ public class newday extends JDialog{
     double beg;
     double num;
 
+    /**
+     * Newday constructor process elements for creating new window.
+     *
+     * @param productName name elements of the products base.
+     * @param calories calories number elements of the product base.
+     * @param norma calculated number of calories.
+     */
     public newday(ArrayList<String> productName,ArrayList<Double> calories,float norma) {
         this.setTitle("Начать");
         this.setSize(800, 600);

@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 /**
  * A panel used to display a bar graph.
  * 
- * @author mschnitzius
+ * @author Onuchina Yana.
  */
 
 @SuppressWarnings("serial")
@@ -57,11 +57,20 @@ public class BarChartPanel extends JPanel
 	private double dataMaxY;
 
 	private int yScale;
-
+	/**
+	 * This method sets dataMinY.
+	 *
+	 * @return dataMinY
+	 */
 	public int getDataMinY() {
 		return dataMinY;
 	}
 
+	/**
+	 * This method sets dataMinY.
+	 *
+	 * @param dataMinY declare min Y.
+	 */
 	public void setDataMinY(int dataMinY) {
 		this.dataMinY = dataMinY;
 	}
@@ -102,8 +111,10 @@ public class BarChartPanel extends JPanel
 		});
 	}
 
-	/* (non-Javadoc)
-	 * @see java.awt.Component#paint(java.awt.Graphics)
+	/**
+	 * This method draw graphic.
+	 *
+	 * @param g param of graphic
 	 */
 	@Override
 	public void paint( Graphics g )
@@ -114,7 +125,6 @@ public class BarChartPanel extends JPanel
 
 		int x_midpoint = this.visibleRect.x + this.visibleRect.width / 2;
 
-		// Draw the title.
 		if (title != null && !"".equals(title))
 		{
 			Font original_font = g.getFont();
@@ -127,11 +137,7 @@ public class BarChartPanel extends JPanel
 
 		boolean show_y_axis_label = yAxisLabel != null
 				&& !"".equals(yAxisLabel) && fontMetrics != null;
-		
-		// Figure where on the screen is the minimum x value (where the 
-		// vertical y access will be drawn).  This will depend on how big 
-		// the number labels are on the y access hash marks.  So assume 
-		// the biggest y value is the longest, when drawn as a string.
+
 		int min_x_pos = this.visibleRect.x
 				+ fontMetrics.stringWidth(String.valueOf(scaleMaxY)) + MARGIN
 				+ HASH_MARK_SIZE;
@@ -220,7 +226,7 @@ public class BarChartPanel extends JPanel
 	/**
 	 * Retrieves the actual screen y coordinate for the given data value. 
 	 * @param value		the data value
-	 * @return		the screen coord for that value
+	 * @return the screen coord for that value
 	 */
 	private int getScreenY( double value )
 	{
@@ -287,7 +293,8 @@ public class BarChartPanel extends JPanel
 
 	/**
 	 * Sets the model to use when drawing the chart.
-	 * @param model		the new model
+	 *
+	 * @param model	the new model.
 	 */
 	public void setModel( BarChartModel model )
 	{
@@ -296,6 +303,8 @@ public class BarChartPanel extends JPanel
 	}
 
 	/**
+	 * Gets title.
+	 *
 	 * @return Returns the title.
 	 */
 	public String getTitle()
@@ -304,6 +313,8 @@ public class BarChartPanel extends JPanel
 	}
 
 	/**
+	 * Sets title.
+	 *
 	 * @param title The title to set.
 	 */
 	public void setTitle( String title )
@@ -312,6 +323,8 @@ public class BarChartPanel extends JPanel
 	}
 
 	/**
+	 * Gets titleFont.
+	 *
 	 * @return Returns the titleFont.
 	 */
 	public Font getTitleFont()
@@ -320,6 +333,8 @@ public class BarChartPanel extends JPanel
 	}
 
 	/**
+	 * Sets titleFont.
+	 *
 	 * @param titleFont The titleFont to set.
 	 */
 	public void setTitleFont( Font titleFont )
@@ -328,6 +343,8 @@ public class BarChartPanel extends JPanel
 	}
 
 	/**
+	 * Gets yAxisLabel.
+	 *
 	 * @return Returns the yAxisLabel.
 	 */
 	public String getYAxisLabel()
@@ -336,6 +353,8 @@ public class BarChartPanel extends JPanel
 	}
 
 	/**
+	 * Sets yAxisLabel.
+	 *
 	 * @param axisLabel The yAxisLabel to set.
 	 */
 	public void setYAxisLabel( String axisLabel )

@@ -12,6 +12,12 @@ import java.util.Date;
 import java.util.List;
 import java.awt.Color;
 
+/**
+ * The class contains methods and objects for creating a separate window of personal data information.
+ *
+ * @author Mityulya Evgeniy.
+ * @version 1.0.
+ */
 public class PersonalData extends JDialog{
 
     private List<PersonParam> allPersonParams = new ArrayList<>();
@@ -39,6 +45,11 @@ public class PersonalData extends JDialog{
 
     float norma;
 
+    /**
+     * PersonalData constructor process elements for creating new window.
+     *
+     * @param norma exist for calculating calories norm.
+     */
     public PersonalData(float norma) {
         this.setTitle("Расчет калорий");
         this.norma = norma;
@@ -117,7 +128,7 @@ public class PersonalData extends JDialog{
         this.add(calculateField);
         this.setLayout(null);
 
-        JButton Graphic = new JButton("<html><h2><font color=\"black\">График"); /*ПОМЕНЯТЬ ЦВЕТ И РАЗМЕР*/
+        JButton Graphic = new JButton("<html><h2><font color=\"black\">График");
         Graphic.setBounds(500, 265, 200, 40);
         Graphic.setBackground(new Color(235, 246, 252));
         Graphic.setBorder(BorderFactory.createLineBorder(new Color(149, 175, 252),4,true));
@@ -167,6 +178,9 @@ public class PersonalData extends JDialog{
 
     }
 
+    /**
+     * This is the loadSavedData method for saving all personal information.
+     */
     private void loadSavedData() {
         try {
             boolean exists = (new File(FILE_NAME)).isFile();
@@ -190,6 +204,11 @@ public class PersonalData extends JDialog{
         }
     }
 
+    /**
+     * This is the savePersonData method for creating file for saving allPeronParams.
+     *
+     * @param personParam contains all persons information.
+     */
     private void savePersonData(PersonParam personParam) {
         try {
             OutputStream fileOutputStream = new FileOutputStream(FILE_NAME);
@@ -203,6 +222,11 @@ public class PersonalData extends JDialog{
         }
     }
 
+    /**
+     * getPersonParamFromForm constructor gets persons information in fields.
+     *
+     * @return personParam.
+     */
     public PersonParam getPersonParamFromForm() {
         PersonParam personParam = new PersonParam();
         personParam.setHeight(Float.parseFloat(Rost.getText()));
@@ -213,6 +237,12 @@ public class PersonalData extends JDialog{
         personParam.setDate(new Date());
         return personParam;
     }
+
+    /**
+     * gettting Norma constructor gets persons norm.
+     *
+     * @return persons norm.
+     */
     float gettingNorma(){
         return norma;
     }

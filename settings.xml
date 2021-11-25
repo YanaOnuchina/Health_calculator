@@ -1,0 +1,10 @@
+<proxy>
+    <id>optional</id>
+    <active>true</active>
+    <protocol>http</protocol>
+    <username>имя</username>
+    <password>пароль</password>
+    <host>proxy</host>
+    <port>111</port>
+    <nonProxyHosts>local.net|some.host.com</nonProxyHosts>
+</proxy>

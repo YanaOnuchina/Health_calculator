@@ -15,15 +15,22 @@ import java.util.Scanner;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JFrame;
-import javax.swing.border.BevelBorder;
 
-
+/**
+ * The class containing the main menu methods and objects for creating windows and its objects.
+ *
+ * @author Mityulya Evgeniy, Matoshka Ivan.
+ * @version 1.0.
+ */
 public class MainMenu extends JFrame {
 
     ArrayList<String> productName = new ArrayList<>();
     ArrayList<Double> calories = new ArrayList<>();
     float norma = 0;
 
+    /**
+     *  This is the MainMenu constructor. Serves to create a main menu window.
+     */
     public MainMenu() {
 
         try {
@@ -97,7 +104,11 @@ public class MainMenu extends JFrame {
             public void windowOpened(WindowEvent e) {
 
             }
-
+            /**
+             * This method close window. Save changes in text file.
+             *
+             * @param e closing window.
+             */
             @Override
             public void windowClosing(WindowEvent e) {
                     try {
@@ -146,7 +157,9 @@ public class MainMenu extends JFrame {
         });
 
     }
-
+    /**
+     * This method save some personal changes in file.
+     */
     public void infoloading() throws IOException {
         FileReader fr = new FileReader("Jabroni.txt", StandardCharsets.UTF_8);
         try (Scanner scanner = new Scanner(fr)) {

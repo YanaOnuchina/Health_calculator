@@ -3,11 +3,22 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * The class contains methods and objects for creating a separate window of product base.
+ *
+ * @author Mityulya Evgeniy, Matoshka Ivan.
+ * @version 1.0.
+ */
 public class ProductBase extends JDialog{
     ArrayList<String> productName;
     ArrayList<Double> calories;
 
-
+    /**
+     * ProductBase constructor process elements for creating new window.
+     *
+     * @param productName name elements of the products base.
+     * @param calories calories number elements of the product base.
+     */
     public ProductBase(ArrayList<String> productName,ArrayList<Double> calories) {
 
         this.calories = calories;
